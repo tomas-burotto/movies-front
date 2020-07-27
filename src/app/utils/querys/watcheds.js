@@ -18,6 +18,5 @@ export default async function createWatched(token, data, score, comment) {
         comment: comment
     }
     const response = await axios.post(URL + '/watcheds', body, headers)
-    console.log(response)
     return response
 }

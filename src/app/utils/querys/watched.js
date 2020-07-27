@@ -8,6 +8,5 @@ export default async function findWatcheds(token) {
         }
     }
     const response = await axios.get(URL + '/user_watcheds', headers)
-    console.log(response)
     return response
 }

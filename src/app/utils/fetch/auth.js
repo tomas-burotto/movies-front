@@ -8,6 +8,5 @@ export default async function authentication(email,password) {
         password
     }}
     const response = await axios.post(URL+'/login',data)
-    console.log(response)
     return response
 }

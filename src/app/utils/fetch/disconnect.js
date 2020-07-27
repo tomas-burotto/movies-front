@@ -8,6 +8,6 @@ export default async function disconnect(token) {
         }
     }
     const response = await axios.delete(URL + '/logout', headers)
-    console.log(response)
+
     return response
 }

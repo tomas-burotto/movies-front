@@ -43,7 +43,6 @@ const SignUp = props => {
   const handleSubmit = async(e)=>{
     setLoading(true)
     const response = await createUser(values.email,values.password)
-    console.log(response)
     if (response.data.id) {
       history.push('/sign-in')
     }

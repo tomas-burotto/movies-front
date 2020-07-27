@@ -17,6 +17,5 @@ export default async function createDesired(token, data) {
         genre: data.Genre
     }
     const response = await axios.post(URL + '/desireds', body, headers)
-    console.log(response)
     return response
 }

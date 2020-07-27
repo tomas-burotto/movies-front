@@ -47,7 +47,6 @@ const Home = () => {
   const handleSubmit = async (e) => {
     setLoading(true)
     const response = await getTitle(search)
-    console.log(response.data)
     if (response.data.Title){
       setResult(response.data)
       setLoading(false)
