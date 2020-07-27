@@ -1,0 +1,1 @@
+export const omdb = 'http://www.omdbapi.com';

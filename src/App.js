@@ -1,56 +1,58 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import {
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
+import {
+  Home as HomeView,
+  SignIn as SignInView,
+  SignUp as SignUpView,
+  Watched as WatchedView
+} from './app/views';
+
+import NavBar from './app/layouts/Menu';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    type: "dark",
+    primary: {
+      // light: will be calculated from palette.primary.main,
+      main: '#ff4400',
+      // dark: will be calculated from palette.primary.main,
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
+    secondary: {
+      light: '#0066ff',
+      main: '#0044ff',
+      // dark: will be calculated from palette.secondary.main,
+      contrastText: '#ffcc00',
+    },
+    // Used by `getContrastText()` to maximize the contrast between
+    // the background and the text.
+    tonalOffset: 0.2,
+  },
+});
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <ThemeProvider theme={theme}>
+        <div className="App-bar">
+          <NavBar />
+        </div>
+        <div className="App-intro">
+          <Switch>
+            <Route exact path="/" component={HomeView} />
+            <Route exact path="/watched" component={WatchedView} />
+            <Route exact path="/sign-in" component={SignInView} />
+            <Route exact path="/sign-up" component={SignUpView} />
+            <Redirect to="/" />
+          </Switch>
+        </div>
+      </ThemeProvider>
     </div>
   );
 }
